@@ -1,4 +1,4 @@
-import cv2
+ import cv2
 import numpy as np
 
 # --- 1) Load Haar Cascades ---

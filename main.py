@@ -1,26 +1,26 @@
- import cv2
+import cv2
 import numpy as np
 
 # --- 1) Load Haar Cascades ---
 face_cascade = cv2.CascadeClassifier(
-    r"C:\Users\Bulbul\OneDrive\Desktop\object_detcter\models_files\haarcascade_frontalface_default (1).xml")
+    r"C:\Users\Bulbul\OneDrive\Desktop\AI_projects\object_detcter\models_files\haarcascade_frontalface_default (1).xml")
 eye_cascade = cv2.CascadeClassifier(
-    r"C:\Users\Bulbul\OneDrive\Desktop\object_detcter\models_files\haarcascade_eye (1).xml")
+    r"C:\Users\Bulbul\OneDrive\Desktop\AI_projects\object_detcter\models_files\haarcascade_eye (1).xml")
 smile_cascade = cv2.CascadeClassifier(
-    r"C:\Users\Bulbul\OneDrive\Desktop\object_detcter\models_files\haarcascade_smile (1).xml")
+    r"C:\Users\Bulbul\OneDrive\Desktop\AI_projects\object_detcter\models_files\haarcascade_smile (1).xml")
 
 # --- 2) Load YOLOv3-tiny (FASTER) ---
 net = cv2.dnn.readNet(
-    r"C:\Users\Bulbul\OneDrive\Desktop\object_detcter\models_files\yolov3.weights",
-    r"C:\Users\Bulbul\OneDrive\Desktop\object_detcter\models_files\yolov3 (2).cfg"
+    r"C:\Users\Bulbul\OneDrive\Desktop\AI_projects\object_detcter\models_files\yolov3.weights",
+    r"C:\Users\Bulbul\OneDrive\Desktop\AI_projects\object_detcter\models_files\yolov3 (2).cfg"
 )
-with open(r"C:\Users\Bulbul\OneDrive\Desktop\object_detcter\models_files\coco.names", "r") as f:
+with open(r"C:\Users\Bulbul\OneDrive\Desktop\AI_projects\object_detcter\models_files\coco.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 layer_names = net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
 
 # --- 3) Open webcam ---
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2000)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1000)
 cap.set(cv2.CAP_PROP_FPS, 30)
